@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Write Log</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>새로운 기록 작성하기</h1>
+
+      <div class="nav-links">
+        <a href="/">홈으로</a>
+      </div>
+
+      <form method="post">
+        <label>기록 유형</label>
+        <select name="type">
+          <option value="TIL">TIL</option>
+          <option value="TroubleShooting">트러블슈팅</option>
+        </select>
+
+        <label>제목</label>
+        <input type="text" name="title" required />
+
+        <label>내용</label>
+        <textarea name="content" rows="10" required></textarea>
+
+        <button type="submit">제출</button>
+      </form>
+    </div>
+  </body>
+</html>

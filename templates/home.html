@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dev Log</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Dev.Log</h1>
+
+      <div class="nav-links">
+        <a href="/write">새로운 기록 작성하기</a>
+      </div>
+
+      <h2>기록</h2>
+      <ul>
+        {% if logs %} {% for log in logs %}
+        <li>
+          [{{ log.type }}]
+          <a href="/log/{{ log.id }}">{{ log.title }}</a>
+        </li>
+        {% endfor %} {% else %}
+        <li>아직 기록이 없습니다.</li>
+        {% endif %}
+      </ul>
+    </div>
+  </body>
+</html>

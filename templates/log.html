@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Log Detail</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>{{ log.title }}</h1>
+      <p><b>글 유형 :</b> {{ log.type }}</p>
+      <p>{{ log.content }}</p>
+
+      <div class="nav-links">
+        <a href="/">리스트로 돌아가기</a>
+        <a href="/write">새로운 기록 작성하기</a>
+      </div>
+    </div>
+  </body>
+</html>

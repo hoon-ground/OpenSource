@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 logs = []
 
+
 @app.route("/")
 def home():
     return render_template("home.html", logs=logs)
@@ -13,8 +14,11 @@ def home():
 def write():
     if request.method == "POST":
         log_type = request.form["type"]
-        title = request.form["title"]
-        content = request.form["content"]
+        title = request.form["title"].strip()
+        content = request.form["content"].strip()
+
+        if not title or not content:
+            return render_template("write.html")
 
         log = {
             "id": len(logs),
@@ -34,6 +38,6 @@ def log_detail(id):
     log = logs[id]
     return render_template("log.html", log=log)
 
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
-    

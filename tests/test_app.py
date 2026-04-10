@@ -1,4 +1,4 @@
-from app import app, logs, Log
+from app.app import app, logs, Log
 
 
 def test_home_page():

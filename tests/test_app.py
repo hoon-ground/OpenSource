@@ -1,4 +1,4 @@
-from app import app, logs
+from app import app, logs, Log
 
 
 def test_home_page():
@@ -22,18 +22,18 @@ def test_create_log():
 
     assert response.status_code == 302
     assert len(logs) == 1
-    assert logs[0]["title"] == "Flask 공부"
-    assert logs[0]["content"] == "pytest로 테스트 작성"
+    assert logs[0].title == "Flask 공부"
+    assert logs[0].content == "pytest로 테스트 작성"
 
 
 def test_log_detail_page():
     logs.clear()
-    logs.append({
-        "id": 0,
-        "type": "TIL",
-        "title": "테스트 제목",
-        "content": "테스트 내용"
-    })
+    logs.append(Log(
+        id=0,
+        type="TIL",
+        title="테스트 제목",
+        content="테스트 내용"
+    ))
 
     client = app.test_client()
     response = client.get("/log/0")

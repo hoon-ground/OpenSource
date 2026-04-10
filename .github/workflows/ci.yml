@@ -34,6 +34,8 @@ jobs:
       - name: Run tests
         run: |
           pytest tests/ -v --cov=app --cov-report=xml
+        env:
+          PYTHONPATH: ${{ github.workspace }}
 
       - name: Upload coverage reports
         uses: codecov/codecov-action@v4
